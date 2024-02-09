@@ -1,0 +1,55 @@
+import java.util.*;
+
+public class Main {
+
+    //creating stack using arrays 
+    
+    public static class Stack {
+        int[] arr = new int[10];
+        int idx = 0;
+
+        public void push(int x) {
+            arr[idx] = x;
+            idx++;
+        }
+
+        public void display() {
+            for (int i = 0; i < idx; i++) {
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+        public int peek(){
+        if(idx ==0){
+            return -1;
+        }
+            return arr[idx-1];
+        }
+        public int pop(){
+         if(idx ==0){
+             System.out.print("Stack is empty");
+             return -1;
+         }else {
+             int popElement = arr[idx -1];
+             idx--;
+             return popElement;
+         }
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack st = new Stack();
+        st.push(1);
+        st.push(5);
+        st.push(6);
+        st.push(9);
+        st.push(8);
+        st.display();
+        //peek 
+      System.out.println("Peek Element" + " "+st.peek());
+        st.display();
+
+        System.out.println("Pop Element is " + " " + st.pop());
+        st.display();
+    }
+}
