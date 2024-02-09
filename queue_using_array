@@ -1,0 +1,76 @@
+public class Main {
+    // Newton School Online Java compiler to run Java online.
+    // Write Java code in this online editor and run it.
+    public static class Queue{
+        int arr[]  = new int[10];
+        int front = 0;
+        int rear = -1;
+        int size = 0;
+        //enqueue
+        void enqueue(int x){
+         if(size == arr.length){
+             System.out.print("Queue is full. Cannot enqueue.");
+             return;
+         }
+         rear = (rear + 1)% arr.length;
+         arr[rear] = x;
+         size++;
+        }
+        //dequeue 
+        int dequeue(){
+            if(size ==0){
+            System.out.println("Queue is empty. Cannot dequeue.");
+            return -1; 
+            }
+            int dequeueRElement = arr[front];
+            front = (front+1)%arr.length;
+            size--;
+            return dequeueRElement;
+        }
+        //display
+        void display(){
+            if(size == 0){
+                System.out.println("Queue is empty. Cannot dequeue.");
+                return;
+            }
+            for(int i=front;i<rear;i++){
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+        // Method to peek the front element
+        int peek(){
+            if (size == 0) {
+                System.out.println("Queue is empty. Cannot peek.");
+                return -1;
+            }
+            return arr[front];
+        }
+        // Method to check if the queue is full
+        public boolean isFull() {
+            return size == arr.length;
+        }
+        // Method to check if the queue is empty
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+    }
+    public static void main(String[] args) {
+        Queue q = new Queue();
+        q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(6);
+        q.enqueue(8);
+        q.display();
+
+        q.dequeue();
+        q.display();
+
+
+        System.out.println("Peek Element: " + q.peek());
+        System.out.println("queue is Emplty : " + q.isEmpty());
+        System.out.println("queue is full : " + q.isFull());
+
+    }
+}
